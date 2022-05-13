@@ -1,0 +1,8 @@
+siempre hay que verificar que no mute el state original, ya que va en contra de react
+
+const formatearCatnidad = (cantidad) => {
+        cantidad.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD'
+        })
+    }}
