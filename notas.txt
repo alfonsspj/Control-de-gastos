@@ -6,3 +6,16 @@ const formatearCatnidad = (cantidad) => {
             currency: 'USD'
         })
     }}
+
+
+
+
+librerias para fechas
+	--- moment .js
+	--- date-fns  -- ligero no muta los objetos originales
+
+	--- api  temporal -- no soportado por los navegadores
+
+
+
+
