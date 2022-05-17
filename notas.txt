@@ -16,6 +16,7 @@ librerias para fechas
 
 	--- api  temporal -- no soportado por los navegadores
 
+tolocaltheystring
 
 
 

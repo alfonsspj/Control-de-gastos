@@ -1,6 +1,19 @@
-import React from 'react'
+// por los cambios que sucedan en gastos
+import { useState, useEffect } from 'react'; 
 
-const ControlPresupuesto = ({presupuesto}) => {
+const ControlPresupuesto = ({gastos, presupuesto}) => {
+
+    const[disponible, setDisponible] = useState(0)
+    const[gastado, setGastado] = useState(0)
+
+    useEffect(() => {
+        // console.log('componente listo')
+        // si se tiene un arreglo con objetos el metodo mas usado va a ser .reduce -- va a acumular una gran cantiadad de datos en una sola variable
+        const totalGastado = gastos.reduce((total, gasto) => gasto.cantidad + total, 0);
+        console.log(totalGastado);
+
+        setGastado(totalGastado)
+    }, [gastos])
 
     const formatearCantidad = (cantidad) => {
         return cantidad.toLocaleString('en-US', {
@@ -20,10 +33,10 @@ const ControlPresupuesto = ({presupuesto}) => {
                     <span>Presupuesto: </span>{formatearCantidad(presupuesto)}
                 </p>
                 <p>
-                    <span>Disponible: </span>{formatearCantidad(0)}
+                    <span>Disponible: </span>{formatearCantidad(disponible)}
                 </p>
                 <p>
-                    <span>Gastado: </span>{formatearCantidad(0)}
+                    <span>Gastado: </span>{formatearCantidad(gastado)}
                 </p>
             </div>
         </div>
