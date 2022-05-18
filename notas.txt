@@ -16,7 +16,49 @@ librerias para fechas
 
 	--- api  temporal -- no soportado por los navegadores
 
+metodo
 tolocaltheystring
+
+
+buscar en npm
+-- instalar dependencia react-swipeable-list
+-- npm install react-swipeable-list
+-- npm i prop-types
+
+
+
+
+
+git status
+
+
+git add .
+git commit -m ""
+
+
+git push
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

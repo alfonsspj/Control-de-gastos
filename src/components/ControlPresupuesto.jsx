@@ -10,8 +10,11 @@ const ControlPresupuesto = ({gastos, presupuesto}) => {
         // console.log('componente listo')
         // si se tiene un arreglo con objetos el metodo mas usado va a ser .reduce -- va a acumular una gran cantiadad de datos en una sola variable
         const totalGastado = gastos.reduce((total, gasto) => gasto.cantidad + total, 0);
-        console.log(totalGastado);
+        // console.log(totalGastado);
 
+        const totalDisponible = presupuesto - totalGastado;
+
+        setDisponible(totalDisponible)
         setGastado(totalGastado)
     }, [gastos])
 
