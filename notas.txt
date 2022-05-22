@@ -51,6 +51,39 @@ siempre es bueno que despues que realices ciertar acciones => limpies el state ,
 dependencia para grafico circular   => react-circular-progressbar
 
 
+react  mantiene toda la informacion, todo el state en memoria
+dependiendo de la aplicacion tendras que conectarlo con algun backend, enviar la informacion y almacenarla en una base de datos
+
+O tambien se puede almacenar en localStorage sino es informacion muy sensible ni importante
+
+
+JSON.stringify convierte un string en arreglo ya que localstorage no guarda arreglos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

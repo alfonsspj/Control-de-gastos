@@ -6,9 +6,13 @@ import { generarId } from './helpers';
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
 
 function App() {
-  const [gastos, setGastos] = useState([]);
+  const [gastos, setGastos] = useState(
+    localStorage.getItem('gastos') ? JSON.parse(localStorage.getItem('gastos')) : []
+  );
 
-  const [presupuesto, setPresupuesto] = useState(0);
+  const [presupuesto, setPresupuesto] = useState(
+    Number(localStorage.getItem('presupuesto')) ?? 0
+  );
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
   const [modal, setModal] = useState(false);
   const [animarModal, setAnimarModal] = useState(false);
@@ -24,6 +28,25 @@ function App() {
       }, 500);
     }
   }, [ gastoEditar ])
+
+  // se ejecuta cuando cambie presupuesto
+  useEffect(() => {
+    localStorage.setItem('presupuesto', presupuesto ?? 0)
+  }, [presupuesto])
+
+  // escucha los cambios que sucedan en gastos -- se ejecuta al menos una ves y de ahi cada que cambie
+  useEffect(() => {
+    localStorage.setItem('gastos', JSON.stringify(gastos) ?? [] );
+  }, [gastos])
+
+  //se ejecuta una solo ves cuando carga la aplicacion -- toma presupuesto del localStorage
+  useEffect(() => {
+    const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0;
+    // esta parte salta al panel donde esta el presupuesto
+    if(presupuestoLS > 0) {
+      setIsValidPresupuesto(true)
+    }
+  }, [])
 
   const handleNuevoGasto = () => {
     setModal(true)
