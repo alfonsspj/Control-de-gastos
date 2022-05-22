@@ -41,14 +41,14 @@ git push
 
 
 
+la solucion a tantos props es redux o contexApi
+
+
+siempre es bueno que despues que realices ciertar acciones => limpies el state , para no tener comportamiento raros
 
 
 
-
-
-
-
-
+dependencia para grafico circular   => react-circular-progressbar
 
 
 

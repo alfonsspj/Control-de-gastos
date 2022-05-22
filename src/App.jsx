@@ -17,11 +17,17 @@ function App() {
 
   useEffect(() => {
     if( Object.keys(gastoEditar).length > 0 ) {
-      handleNuevoGasto()
+      setModal(true)
+
+      setTimeout( () => {
+        setAnimarModal(true)
+      }, 500);
     }
   }, [ gastoEditar ])
+
   const handleNuevoGasto = () => {
     setModal(true)
+    setGastoEditar({})
 
     setTimeout( () => {
       setAnimarModal(true)
@@ -29,17 +35,32 @@ function App() {
   }
 
   const guardarGasto = gasto => {
-    // console.log(gasto)
-
-    gasto.id = generarId();
-    gasto.fecha = Date.now();
-    setGastos([...gastos, gasto])
+    if(gasto.id) {
+      // Actualizar
+      const gastoActaulizados = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState)
+      setGastos(gastoActaulizados);
+      setGastoEditar({})
+      
+    }else {
+      // Nuevo gasto 
+      gasto.id = generarId();
+      gasto.fecha = Date.now();
+      setGastos([...gastos, gasto]) 
+    }
 
     // cierra el componente con la transicion
     setAnimarModal(false)
     setTimeout(() => {
         setModal(false)
     }, 500);
+  }
+
+  const eliminarGasto = id => {
+    // console.log('eliminando ', id);
+    const gastosActualizados = gastos.filter( gasto => gasto.id !== id); 
+
+    console.log(gastosActualizados);
+    setGastos(gastosActualizados)
   }
 
   return (
@@ -58,6 +79,7 @@ function App() {
             <ListadoGastos
               gastos={gastos}
               setGastoEditar={setGastoEditar}
+              eliminarGasto={eliminarGasto}
             />
           </main>
           <div className="nuevo-gasto">
@@ -75,6 +97,8 @@ function App() {
                   animarModal={animarModal}
                   setAnimarModal={setAnimarModal}
                   guardarGasto={guardarGasto}
+                  gastoEditar={gastoEditar}
+                  setGastoEditar={setGastoEditar}
                 />}
       
     </div>
